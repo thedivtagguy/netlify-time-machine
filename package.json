@@ -4,7 +4,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "netlify": "node ./tasks/getSite.mjs",
+    "screenshot": "node ./tasks/getScreenshot.cjs",
+    "gif": "node ./tasks/makeGif.cjs"
   },
   "devDependencies": {
     "@svitejs/vite-plugin-svelte": "^0.11.1",
@@ -15,6 +18,12 @@
     "vite": "^2.6.14"
   },
   "dependencies": {
+    "canvas": "^2.8.0",
+    "fs": "^0.0.1-security",
+    "gif-encoder-2": "^1.0.5",
+    "gifencoder": "^2.0.1",
+    "netlify": "^10.1.1",
+    "puppeteer": "^13.0.1",
     "source-map-js": "^1.0.1"
   }
 }
