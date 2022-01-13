@@ -37,9 +37,6 @@ const getScreenshot = async (links, directory, filename, extension) => {
         console.log(`${filename}${i}.${extension} saved`);
     }
     
-    // From these images, create a gif
-    await makeGif(directory, filename, extension);
-    console.log(`${filename}.gif saved`);
     await browser.close();
     }
 

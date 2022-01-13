@@ -4,13 +4,11 @@ const { createWriteStream, readdir } = require('fs')
 const { promisify } = require('util')
 const path = require('path')
 
-const readdirAsync = promisify(readdir)
 const imagesFolder = './screenshots'
 
 async function createGif(algorithm) {
   return new Promise(async resolve1 => {
-    // read image directory
-    const files = await readdirAsync(imagesFolder)
+    const files = await promisify(readdir)(imagesFolder)
 
     // find the width and height of the image
     const [width, height] = await new Promise(resolve2 => {
@@ -20,7 +18,7 @@ async function createGif(algorithm) {
     })
 
     // base GIF filepath on which algorithm is being used
-    const dstPath = path.join(`./intermediate-${algorithm}.gif`)
+    const dstPath = path.join(`./srishti-archive-${algorithm}.gif`)
     // create a write stream for GIF data
     const writeStream = createWriteStream(dstPath)
     // when stream closes GIF is created so resolve promise
@@ -53,5 +51,4 @@ async function createGif(algorithm) {
   })
 }
 
-createGif('neuquant')
 createGif('octree')
